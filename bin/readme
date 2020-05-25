@@ -1,0 +1,26 @@
+An input encoding consists of a declaration section and a set of multi-valued propositional rules.
+The declaration includes sort declarations, object declarations, constant declarations, and variable 
+declarations. These define the names of the user-defined sorts, the elements in the sorts, the argument and value sorts for constants, and the sorts of variables respectively. See the examples for details on syntax.
+
+
+The multi-valued propositional rules are formed using the constants, variables, objects, and propositional
+connectives, which include & (conjunction), | (disjunction), -> (implication), <- (reverse direction
+implication), not (negation). See the examples for more detailed usage.
+
+
+Typical invocation of the toolchain script will be 
+
+aspmt2smt <FILENAME> <CONSTANTS>
+
+where <FILENAME> is the name of the input file, <CONSTANTS> are of the form "-c <CONST>=<VALUE>".
+
+See the example outputs for specific examples of the invocations.
+
+
+
+Versions used for external tools in the toolchain:
+
+f2lp: v1.3
+gringo: v3.0.4
+z3: v4.3.2
+

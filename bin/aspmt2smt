@@ -1,0 +1,31 @@
+#!/bin/bash
+# Get time as a UNIX timestamp (seconds elapsed since Jan 1, 1970 0:00 UTC)
+
+T="$(date +%s%N)"
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+echo ""
+echo "Usage:"
+echo ""
+echo "  aspmt <filename> [-c <const>=<val>]*"
+echo "  e.g."
+echo "  aspmt example -c a=4 -c b=5"
+echo ""
+echo "  -c <const>=<val> : replaces <const> with <val> in the program"
+echo "  -h --help        : this menu"
+echo ""
+elif [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
+aspmt-compiler -v
+else
+aspmt-compiler $@ -s -t | f2lp | gringo -t | aspmt-compiler -ss | aspmt-compiler -sss | z3 -smt2 -in -st | aspmt-compiler -ssss
+
+# Time interval in nanoseconds
+T="$(($(date +%s%N)-T))"
+# Seconds
+
+S="$((T/1000000000))"
+# Milliseconds
+M="$((T/1000000))"
+
+echo "Total time in milliseconds: ${M}"
+fi
