@@ -1,0 +1,38 @@
+$domain(0..10*ms).
+
+step(0..st).
+astep(0..st-1).
+
+#domain step(S).
+#domain astep(AS).
+
+
+{accel(AS)}.
+{decel(AS)}.
+
+:- accel(AS), decel(AS).
+
+totaltime(AS+1)$==totaltime(AS)$+duration(AS).
+
+speed(AS+1)$==speed(AS) :- not accel(AS), not decel(AS).
+speed(AS+1)$==speed(AS) $+ ar $* duration(AS) :- accel(AS).
+speed(AS+1)$==speed(AS) $- ar $* duration(AS) :- decel(AS).
+speed(S) $>= 0.
+speed(S) $<= ms.
+
+location(AS+1) $== duration(AS)$*(speed(AS)$+speed(AS+1))$/2 $+ location(AS).
+
+
+totaltime(0)$==0.
+speed(0)$==0.
+location(0)$==0.
+
+location(st)$==l.
+speed(st)$==0.
+totaltime(st)$==t.
+
+#hide step/1.
+#hide astep/1.
+#hide time/1.
+#hide distance/1.
+

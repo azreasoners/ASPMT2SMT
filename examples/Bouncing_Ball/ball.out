@@ -1,0 +1,39 @@
+When running the command 
+
+aspmt2smt ball -c st=4
+
+the output is
+
+  catch_0_ = false
+  catch_1_ = false
+  catch_2_ = false
+  catch_3_ = false
+  coefficient = 0.95
+  drop_0_ = true
+  drop_1_ = false
+  drop_2_ = false
+  drop_3_ = false
+  duration_0_ = 0.0
+  duration_1_ = 10.1015254455
+  duration_2_ = 0.0
+  duration_3_ = 21.2663693589
+  false_a = false
+  gravity = -9.8
+  holding_0_ = true
+  holding_1_ = false
+  holding_2_ = false
+  holding_3_ = false
+  holding_4_ = false
+  pos_0_ = 500.0
+  pos_1_ = 500.0
+  pos_2_ = 0.0
+  pos_3_ = 0.0
+  pos_4_ = 50.0
+  speed_0_ = 0.0
+  speed_1_ = 0.0
+  speed_2_ = -98.9949493661
+  speed_3_ = 94.0452018978
+  speed_4_ = -89.3429418029
+  true_a = true
+Z3 time in milliseconds: 10
+Total time in milliseconds: 152

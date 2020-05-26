@@ -1,0 +1,56 @@
+:-sorts
+  step;astep.
+
+:-objects
+  0..st           :: step;
+  0..st-1         :: astep.
+
+:-constants
+  time(step)      :: real[0..t];
+  duration(astep) :: real[0..t];
+  accel(astep)    :: boolean;
+  decel(astep)    :: boolean;
+  speed(step)     :: real[0..ms];
+  location(step)  :: real[0..l].
+
+:-variables
+  S               :: astep;
+  B               :: boolean.
+
+% Actions and durations are exogenous
+{accel(S)=B}.
+{decel(S)=B}.
+{duration(S)=X}.
+
+% nonconcurrency of actions
+<- accel(S)=true & decel(S)=true.
+
+%effects of accel and decel
+speed(S+1)=Y <- accel(S)=true & speed(S)=X & duration(S)=D 
+    & Y = X+ar*D.
+speed(S+1)=Y <- decel(S)=true & speed(S)=X & duration(S)=D 
+    & Y = X-ar*D.
+
+% preconditions of accel and decel
+<- accel(S)=true & speed(S)=X & duration(S)=D
+    & Y = X+ar*D & Y > ms. 
+<- decel(S)=true & speed(S)=X & duration(S)=D
+    & Y = X-ar*D & Y < 0. 
+
+% inertia of speed
+{speed(S+1)=X} <- speed(S)=X.
+
+location(S+1)=Y <- location(S)=X & speed(S)=A & 
+    speed(S+1)=C & duration(S)=D & Y = X+(A+C)/2*D.
+
+time(S+1)=Y <- time(S)=X & duration(S)=D & Y=X+D.
+
+% problem instance
+
+time(0)=0.
+speed(0)=0.
+location(0)=0.
+
+<- location(st) = Z & Z != l.
+<- speed(st) = Z & Z != 0.
+<- time(st) = Z & Z != t.

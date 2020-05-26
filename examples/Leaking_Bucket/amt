@@ -1,0 +1,35 @@
+:-sorts
+  atime;time.
+
+:-objects
+  0..10 :: time;
+  0..9  :: atime.
+
+:-constants
+  amt(time) :: real[0..10];
+  weight(time) :: real[0..5];
+  fill(atime) :: boolean.
+
+:-variables
+  T :: time;
+  ST :: atime;
+  X :: int[0..10].
+
+
+{amt(ST+1) = X-1} <- amt(ST) = X.
+
+weight(T) = Y <- Y = X/3 & amt(T) = X.
+
+{fill(ST) = true}.
+{fill(ST) = false}.
+
+amt(ST+1) = X <- fill(ST) = true & X = 10.
+
+<- amt(T) = X & X < 2.
+
+amt(0) = 5.
+
+%<- amt(10) = X & not X = 8.
+%not (not X = 8 & amt(10) = X).
+%not not (amt(10) -> X = 8).
+not not (amt(10) = 8).

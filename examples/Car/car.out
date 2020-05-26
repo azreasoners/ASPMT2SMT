@@ -1,0 +1,31 @@
+When running the command 
+
+aspmt2smt car3 -c st=3 -c t=4 -c ms=4 -c ar=3 -c l=10
+
+the output is
+
+  accel_0_ = true
+  accel_1_ = false
+  accel_2_ = false
+  decel_0_ = false
+  decel_1_ = false
+  decel_2_ = true
+  duration_0_ = 1.1835034190
+  duration_1_ = 1.6329931618
+  duration_2_ = 1.1835034190
+  false_a = false
+  location_0_ = 0.0
+  location_1_ = 2.1010205144
+  location_2_ = 7.8989794855
+  location_3_ = 10.0
+  speed_0_ = 0.0
+  speed_1_ = 3.5505102572
+  speed_2_ = 3.5505102572
+  speed_3_ = 0.0
+  time_0_ = 0.0
+  time_1_ = 1.1835034190
+  time_2_ = 2.8164965809
+  time_3_ = 4.0
+  true_a = true
+Z3 time in milliseconds: 10
+Total time in milliseconds: 129

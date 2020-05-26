@@ -1,0 +1,59 @@
+:- sorts
+   step;astep.
+
+:- objects
+   0..st   :: step;
+   0..st-1 :: astep.
+
+:- constants
+   pos(step)   :: real[0..500];
+   speed(step) :: real[-100..100];
+   drop(astep)  :: boolean;
+   catch(astep) :: boolean;
+   duration(astep) :: real[0..100];
+   gravity     :: real[-50..50];
+   coefficient :: real[0..1];
+   holding(step) :: boolean.
+
+:- variables
+  S  :: step;
+  AS :: astep.
+
+coefficient = 95/100.
+gravity = -98/10.
+
+pos(0) = 500.
+holding(0) = true.
+speed(0)  = 0.
+
+{duration(AS) = X}.
+{drop(AS) = true}.
+{drop(AS) = false}.
+{catch(AS) = true}.
+{catch(AS) = false}.
+
+<- drop(AS) = true & catch(AS) = true.
+<- drop(AS) = true & holding(AS) = false.
+<- catch(AS) = true & holding(AS) = true.
+
+<- drop(AS) = true & duration(AS) = X & X != 0.
+<- catch(AS) = true & duration(AS) = X & X != 0.
+
+holding(AS+1) = true & speed(AS+1) = 0 <- catch(AS) = true.
+holding(AS+1) = false <- drop(AS) = true.
+
+holding(AS+1) = true <- holding(AS) = true & drop(AS) = false.
+holding(AS+1) = false <- holding(AS) = false & catch(AS) = false.
+
+{speed(AS+1) = X} <- speed(AS) = Y & duration(AS) = T & gravity = G & X = Y+T*G & holding(AS) = false.
+speed(AS+1) = X <- speed(AS) = X & holding(AS) = true.
+speed(AS+1) = X <- speed(AS) = Y & coefficient = C & X = -1*Y*C & pos(AS) = 0 & holding(AS) = false.
+
+<- pos(S) = X & X < 0.
+
+pos(AS+1) = X <- pos(AS) = Y & duration(AS) = T & speed(AS+1) = S2 & speed(AS) = S1 & X = Y + T*(S1+S2)/2 & ((catch(AS) = false & holding(AS) = false) | drop(AS) = true).
+pos(AS+1) = X <- pos(AS) = X & ((holding(AS) = true & drop(AS) = false) | catch(AS) = true).
+
+<- pos(st-2) = X & X != 0.
+
+<- pos(st) = X & X != 50.

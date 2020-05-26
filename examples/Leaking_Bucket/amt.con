@@ -1,0 +1,17 @@
+$domain(1..c).
+step(0..c).
+astep(0..c-1).
+
+
+amt(T+1) $== amt(T) $- 1 :- not fillUp(T), astep(T).
+amt(T+1) $== c :- fillUp(T),astep(T).
+
+{fillUp(T)} :- astep(T).
+
+amt(0) $== 5.
+amt(c) $== 10.
+
+#hide.
+#show amt/2.
+#show fillUp/1.
+

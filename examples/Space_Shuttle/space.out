@@ -1,0 +1,30 @@
+When running the command 
+
+aspmt2smt space -c st=1
+
+the output is
+
+  duration_0_ = 2.0
+  false_a = false
+  jet1fire_x_0_ = 0.0
+  jet1fire_y_0_ = 1.0
+  jet1fire_z_0_ = 0.0
+  jet2fire_x_0_ = 0.0
+  jet2fire_y_0_ = 0.0
+  jet2fire_z_0_ = 0.0
+  mass = 2.0
+  pos_x_0_ = 0.0
+  pos_x_1_ = 0.0
+  pos_y_0_ = 0.0
+  pos_y_1_ = 3.0
+  pos_z_0_ = 0.0
+  pos_z_1_ = 2.0
+  speed_x_0_ = 0.0
+  speed_x_1_ = 0.0
+  speed_y_0_ = 1.0
+  speed_y_1_ = 2.0
+  speed_z_0_ = 1.0
+  speed_z_1_ = 1.0
+  true_a = true
+Z3 time in milliseconds: 10
+Total time in milliseconds: 127

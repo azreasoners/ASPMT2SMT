@@ -1,0 +1,44 @@
+:- sorts
+   step;astep;axis.
+
+:- objects
+   0..st   :: step;
+   0..st-1 :: astep;
+   x,y,z   :: axis.
+
+:- constants
+   duration(astep)      :: real[0..2];
+   mass                 :: real[0..2];
+   speed(axis,step)    :: real[0..5];
+   pos(axis,step)      :: real[0..5];
+   jet1fire(axis,astep) :: real[0..2];
+   jet2fire(axis,astep) :: real[0..2].
+
+:- variables
+  S      :: step;
+  AS     :: astep;
+  AX,AX1 :: axis.
+
+mass = 2.
+
+speed(x,0) = 0.
+speed(y,0) = 1.
+speed(z,0) = 1.
+
+pos(x,0) = 0.
+pos(y,0) = 0.
+pos(z,0) = 0.
+
+{duration(AS) = X}.
+{jet1fire(AX,AS) = X}.
+{jet2fire(AX,AS) = X}.
+
+<- jet1fire(AX,AS) = X & jet1fire(AX1,AS) = X1 & X != 0 & X1 != 0 & AX != AX1.
+<- jet2fire(AX,AS) = X & jet2fire(AX1,AS) = X1 & X != 0 & X1 != 0 & AX != AX1.
+
+pos(AX,AS+1) = Z <- pos(AX,AS) = X & duration(AS) = T & speed(AX,AS) = S0 & speed(AX,AS+1) = S1 & Z = X + T*(S0+S1)/2.
+speed(AX,AS+1) = Z <- jet1fire(AX,AS) = X1 & jet2fire(AX,AS) = X2 & duration(AS) = T & mass = M & speed(AX,AS) = Y & Z = Y+T*(X1+X2)/M.
+
+<- pos(x,st) = X & X != 0.
+<- pos(y,st) = X & X != 3.
+<- pos(z,st) = X & X != 2.

@@ -1,0 +1,11 @@
+clingcon amt.con -c c=10 
+
+Answer: 1
+fillUp(9) fillUp(0) amt(9)=2 amt(10)=10 amt(8)=3 amt(7)=4 amt(6)=5 amt(5)=6 amt(4)=7 amt(3)=8 amt(2)=9 amt(1)=10 amt(0)=5 
+SATISFIABLE
+
+Models      : 1+    
+Time        : 0.000
+  Prepare   : 0.000
+  Prepro.   : 0.000
+  Solving   : 0.000

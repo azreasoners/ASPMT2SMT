@@ -1,0 +1,11 @@
+clingo amt.lp -c c=10
+
+Answer: 1
+fillUp(11) fillUp(9) fillUp(7) fillUp(6) fillUp(5) fillUp(4) fillUp(3) fillUp(2) amt(3,10) amt(4,10) amt(5,10) amt(6,10) amt(7,10) amt(8,10) amt(10,10) amt(12,10) amt(0,5) amt(1,4) amt(11,9) amt(9,9) amt(2,3) 
+SATISFIABLE
+
+Models      : 1+    
+Time        : 0.000
+  Prepare   : 0.000
+  Prepro.   : 0.000
+  Solving   : 0.000

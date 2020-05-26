@@ -1,0 +1,41 @@
+$domain(0..4*k).
+
+axis(x;y;z).
+
+step(0..st).
+astep(0..st-1).
+
+#domain axis(AX1).
+#domain axis(AX).
+#domain axis(AX2).
+#domain step(ST).
+#domain astep(AS).
+
+:- jet1fire(AX1,AS)$!=0, jet1fire(AX2,AS)$!=0, AX1 != AX2.
+:- jet2fire(AX1,AS)$!=0, jet2fire(AX2,AS)$!=0, AX1 != AX2.
+
+%pos(AX,AS+1)$==X$+D$*(S0$+S1)$/2 :- duration(AS)$==D, speed(AX,AS)$==S0, speed(AX,AS+1)$==S1, pos(AX,AS)$==X.
+pos(AX,AS+1)$==pos(AX,AS)$+(duration(AS)$*(speed(AX,AS)$+speed(AX,AS+1)))$/2.
+
+%speed(AX,AS+1)$==Y$+D$*(X1$+X2)$/m :- jet1fire(AX,AS)$==X1, jet2fire(AX,AS)$==X2, duration(AS)$==D, speed(AX,AS)$==Y.
+speed(AX,AS+1)$==speed(AX,AS)$+(duration(AS)$*(jet1fire(AX,AS)$+jet2fire(AX,AS)))$/m.
+
+speed(x,0)$==0.
+speed(y,0)$==1.
+speed(z,0)$==1.
+
+
+pos(x,0)$==0.
+pos(y,0)$==0.
+pos(z,0)$==0.
+
+pos(x,st)$==0.
+pos(y,st)$==3*k.
+pos(z,st)$==2*k.
+
+#hide.
+#show pos/3.
+#show jet1fire/3.
+#show jet2fire/3.
+#show speed/3.
+#show duration/2.

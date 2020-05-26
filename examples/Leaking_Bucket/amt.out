@@ -1,0 +1,42 @@
+When running the command 
+
+aspmt2smt tests/amt 
+
+the output is
+
+  amt_0_ = 5.0
+  amt_10_ = 8.0
+  amt_1_ = 10.0
+  amt_2_ = 10.0
+  amt_3_ = 10.0
+  amt_4_ = 10.0
+  amt_5_ = 10.0
+  amt_6_ = 10.0
+  amt_7_ = 10.0
+  amt_8_ = 10.0
+  amt_9_ = 9.0
+  false_a = false
+  fill_0_ = true
+  fill_1_ = true
+  fill_2_ = true
+  fill_3_ = true
+  fill_4_ = true
+  fill_5_ = true
+  fill_6_ = true
+  fill_7_ = true
+  fill_8_ = false
+  fill_9_ = false
+  true_a = true
+  weight_0_ = 1.6666666666
+  weight_10_ = 2.6666666666
+  weight_1_ = 3.3333333333
+  weight_2_ = 3.3333333333
+  weight_3_ = 3.3333333333
+  weight_4_ = 3.3333333333
+  weight_5_ = 3.3333333333
+  weight_6_ = 3.3333333333
+  weight_7_ = 3.3333333333
+  weight_8_ = 3.3333333333
+  weight_9_ = 3.0
+Z3 time in milliseconds: 10
+Total time in milliseconds: 87
